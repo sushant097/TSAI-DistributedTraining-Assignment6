@@ -1,0 +1,5 @@
+outs:
+- md5: 05e75db6e7f2a6d2454a939c983843dd.dir
+  size: 584
+  nfiles: 1
+  path: training_log_book
