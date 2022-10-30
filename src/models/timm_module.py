@@ -2,6 +2,7 @@ from typing import Any, List
 
 import torch
 import timm
+from torchvision import transforms as T
 from pytorch_lightning import LightningModule
 from torchmetrics import MaxMetric, MeanMetric
 from torchmetrics.classification.accuracy import Accuracy
@@ -38,6 +39,8 @@ class TIMMLitModule(LightningModule):
 
         # for tracking best so far validation accuracy
         self.val_acc_best = MaxMetric()
+
+        # transform
 
     # def configure_sharded_model(self):
     #     self.net = auto_wrap(self.net)

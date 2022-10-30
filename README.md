@@ -1,4 +1,4 @@
-# Assignment 3 - Experiment Tracking
+# Assignment 6 - Distributed Training
 
 <div align="center">
 
