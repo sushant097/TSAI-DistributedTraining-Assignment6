@@ -62,10 +62,22 @@ python src/train.py trainer.max_epochs=20 datamodule.batch_size=64
 
 
 ```
-### Push model, logs and data to google drive (using dvc)
-1. Untrack logs from git : `git rm -r --cached logs`
+### Push model, logs and data to s3 (using dvc)
+1. Untrack logs from git : `git rm -r --cached logs` and init dvc as `dvc init`
 2. Add logs to dvc: `dvc add logs`
 2.1. `git add . ` and `dvc config core.autostage true` : As logs folder from being tracked by git and then let dvc take care of it
 3. Add a remote: `dvc remote add -d gpu-logs s3://tsai-models/ddp-training/`
-4. Push logs and other tracked files by dvc in gdrive: `dvc push -r gpu-logs`
+4. Push logs and other tracked files by dvc in s3: `dvc push -r gpu-logs`
 5. Now, whenever logs is deleted then, we can directly pull logs from dvc as: `dvc pull -r gpu-logs`
+
+
+How to dump nvidia-gpu logs: https://unix.stackexchange.com/questions/252590/how-to-log-gpu-load
+
+Nvidia-smi
+`!nvidia-smi dmon  -s mu -d 5 -o TD -f abc.txt`
+
+OR
+
+```while true; 
+do nvidia-smi --query-gpu=utilization.gpu,utilization.memory,memory.total,memory.free,memory.used --format=csv >> gpu_utillization.log; sleep 1; 
+done```
