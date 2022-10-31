@@ -51,7 +51,7 @@ class CIFARDataModule(LightningDataModule):
 
         # data transformations
         self.transforms = transforms.Compose(
-            [transforms.ToTensor(), transforms.Normalize((0.1307,), (0.3081,))]
+            [transforms.ToTensor(), transforms.Normalize((0.1307,), (0.3081,)), transforms.Resize((224, 224))]
         )
 
         self.data_train: Optional[Dataset] = None
