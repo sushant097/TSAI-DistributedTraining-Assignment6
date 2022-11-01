@@ -1,6 +1,6 @@
 _target_: src.datamodules.cifar_datamodule.CIFARDataModule
 data_dir: ${paths.data_dir}
-batch_size: 2048
+batch_size: 1500
 train_val_test_split: [50_000, 5_000, 5_000]
 num_workers: 48 # 48 vcpus are available in g4dn instance
 pin_memory: False

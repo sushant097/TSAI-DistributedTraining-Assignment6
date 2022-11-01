@@ -24,7 +24,7 @@ trainer:
 #  gradient_clip_val: 0.5
 
 datamodule:
-  batch_size: 2048
+  batch_size: 1500
 
 logger:
   wandb:
