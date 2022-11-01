@@ -92,7 +92,7 @@ class TIMMLitModule(LightningModule):
         self.val_acc_best(acc)  # update best so far val acc
         # log `val_acc_best` as a value through `.compute()` method, instead of as a metric object
         # otherwise metric would be reset by lightning after each epoch
-        self.log("val/acc_best", self.val_acc_best.compute(), on_step=False, on_epoch=True, prog_bar=False, sync_dist=True)
+        self.log("val/acc_best", self.val_acc_best.compute(), on_step=False, on_epoch=True, sync_dist=True)
         res = self.val_acc_best.compute()
         self.log("hp_metric", res, sync_dist=True)
 
