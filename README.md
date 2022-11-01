@@ -79,5 +79,9 @@ Nvidia-smi
 OR
 
 ```while true; 
-do nvidia-smi --query-gpu=utilization.gpu,utilization.memory,memory.total,memory.free,memory.used --format=csv >> gpu_utillization.log; sleep 1; 
+do nvidia-smi --query-gpu=utilization.gpu,utilization.memory,memory.total,memory.free,memory.used --format=csv >> gpu_utillization.csv; sleep 1; 
 done```
+
+```
+nvidia-smi --query-gpu=timestamp,memory.used,memory.free,memory.total,utilization.gpu --format=csv -l 1
+```
