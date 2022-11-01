@@ -152,5 +152,3 @@ logs/
 .env
 .autoenv
 /data
-/logs
-/training_log_book

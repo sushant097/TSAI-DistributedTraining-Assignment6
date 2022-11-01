@@ -73,15 +73,14 @@ python src/train.py trainer.max_epochs=20 datamodule.batch_size=64
 
 How to dump nvidia-gpu logs: https://unix.stackexchange.com/questions/252590/how-to-log-gpu-load
 
+watch -n 0.5 nvidia-smi
+
 Nvidia-smi
 `!nvidia-smi dmon  -s mu -d 5 -o TD -f abc.txt`
 
 OR
 
 ```while true; 
-do nvidia-smi --query-gpu=utilization.gpu,utilization.memory,memory.total,memory.free,memory.used --format=csv >> gpu_utillization.csv; sleep 1; 
+do nvidia-smi --query-gpu=utilization.gpu,utilization.memory,memory.total,memory.free,memory.used --format=csv >> gpu_utillization.csv; sleep 2; 
 done```
 
-```
-nvidia-smi --query-gpu=timestamp,memory.used,memory.free,memory.total,utilization.gpu --format=csv -l 1
-```
