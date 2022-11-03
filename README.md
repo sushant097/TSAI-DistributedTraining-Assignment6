@@ -17,9 +17,9 @@
 This repository related to data tracking and experimentation. We use dvc to save the use files like logs, models in the 
 separate destination like Google Drive, or any other place whereas git adds the code to the repository. 
 
-MASTER_PORT=29500 MASTER_ADDR=172.31.23.109 WORLD_SIZE=2 NODE_RANK=0 python src/train.py trainer=ddp trainer.devices=1 trainer.num_nodes=2
+MASTER_PORT=29500 MASTER_ADDR=172.31.23.109 WORLD_SIZE=2 NODE_RANK=0 python src/train.py trainer=ddp trainer.devices=1 trainer.num_nodes=2 experiment=example_timm
 
-MASTER_PORT=29500 MASTER_ADDR=172.31.26.101 WORLD_SIZE=2 NODE_RANK=1 python src/train.py trainer=ddp trainer.devices=1 trainer.num_nodes=2
+MASTER_PORT=29500 MASTER_ADDR=172.31.26.101 WORLD_SIZE=2 NODE_RANK=1 python src/train.py trainer=ddp trainer.devices=1 trainer.num_nodes=2 experiment=example_timm
 ## How to run
 
 Install dependencies

@@ -147,6 +147,16 @@ More logs is in `gpu_utilization_fsdp.csv`
 
 
 ### Multi-node training
-g4.8x instance
+
+**Command:**
+```
+
+MASTER_PORT=29500 MASTER_ADDR=172.31.23.109 WORLD_SIZE=2 NODE_RANK=0 python src/train.py trainer=ddp_sim trainer.devices=2 trainer.num_nodes=2 experiment=example_timm
+
+MASTER_PORT=29500 MASTER_ADDR=172.31.26.101 WORLD_SIZE=2 NODE_RANK=1 python src/train.py trainer=ddp_sim trainer.devices=2 trainer.num_nodes=2 experiment=example_timm
+```
+
+
+**Instance Type: g4ad.8xlarge**
 
 nvidia-smi --query-gpu=timestamp,memory.used,memory.free,memory.total,utilization.gpu --format=csv -l 1
