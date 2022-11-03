@@ -14,3 +14,133 @@
 `python src/train.py experiment=example_timm`
 
 * Use `watch -n 0.5 nvidia-smi` that run `nvidia-smi` command in every 0.5 ms
+
+Dump nvidia logs:
+```while true; 
+do nvidia-smi --query-gpu=utilization.gpu,utilization.memory,memory.total,memory.free,memory.used --format=csv >> gpu_utillization.csv; sleep 2; 
+done
+```
+
+#### Tensorboard dev logs
+
+```
+tensorboard dev upload --logdir logs \
+    --name "(optional) FSDP_Training_" \
+    --description "(optional) Training on 4 T4 GPUs - FSDP Training"
+```
+#### Tensorboard dev Experiment logs: https://tensorboard.dev/experiment/iPPND0xlTEmMbrRsaysJHg/
+
+#### Nvidia logs:
+```
+utilization.gpu [%], utilization.memory [%], memory.total [MiB], memory.free [MiB], memory.used [MiB]
+83 %, 54 %, 15360 MiB, 1952 MiB, 12957 MiB
+100 %, 67 %, 15360 MiB, 1952 MiB, 12957 MiB
+83 %, 64 %, 15360 MiB, 1952 MiB, 12957 MiB
+83 %, 43 %, 15360 MiB, 1952 MiB, 12957 MiB
+
+56 %, 5 %, 15360 MiB, 1952 MiB, 12957 MiB
+100 %, 36 %, 15360 MiB, 1952 MiB, 12957 MiB
+97 %, 33 %, 15360 MiB, 1952 MiB, 12957 MiB
+77 %, 18 %, 15360 MiB, 1952 MiB, 12957 MiB
+
+13 %, 0 %, 15360 MiB, 1952 MiB, 12957 MiB
+100 %, 0 %, 15360 MiB, 1952 MiB, 12957 MiB
+100 %, 0 %, 15360 MiB, 1952 MiB, 12957 MiB
+100 %, 0 %, 15360 MiB, 1952 MiB, 12957 MiB
+
+9 %, 0 %, 15360 MiB, 1952 MiB, 12957 MiB
+0 %, 0 %, 15360 MiB, 1952 MiB, 12957 MiB
+0 %, 0 %, 15360 MiB, 1952 MiB, 12957 MiB
+0 %, 0 %, 15360 MiB, 1952 MiB, 12957 MiB
+
+0 %, 0 %, 15360 MiB, 1952 MiB, 12957 MiB
+0 %, 0 %, 15360 MiB, 1952 MiB, 12957 MiB
+0 %, 0 %, 15360 MiB, 1952 MiB, 12957 MiB
+0 %, 0 %, 15360 MiB, 1952 MiB, 12957 MiB
+
+0 %, 0 %, 15360 MiB, 1952 MiB, 12957 MiB
+100 %, 53 %, 15360 MiB, 1952 MiB, 12957 MiB
+98 %, 69 %, 15360 MiB, 1952 MiB, 12957 MiB
+62 %, 7 %, 15360 MiB, 1952 MiB, 12957 MiB
+
+100 %, 73 %, 15360 MiB, 1952 MiB, 12957 MiB
+100 %, 0 %, 15360 MiB, 1952 MiB, 12957 MiB
+100 %, 0 %, 15360 MiB, 1952 MiB, 12957 MiB
+100 %, 0 %, 15360 MiB, 1952 MiB, 12957 MiB
+
+71 %, 50 %, 15360 MiB, 1952 MiB, 12957 MiB
+58 %, 21 %, 15360 MiB, 1952 MiB, 12957 MiB
+82 %, 60 %, 15360 MiB, 1952 MiB, 12957 MiB
+79 %, 59 %, 15360 MiB, 1952 MiB, 12957 MiB
+
+85 %, 50 %, 15360 MiB, 1952 MiB, 12957 MiB
+100 %, 69 %, 15360 MiB, 1952 MiB, 12957 MiB
+70 %, 46 %, 15360 MiB, 1952 MiB, 12957 MiB
+73 %, 29 %, 15360 MiB, 1952 MiB, 12957 MiB
+
+100 %, 71 %, 15360 MiB, 1952 MiB, 12957 MiB
+100 %, 65 %, 15360 MiB, 1952 MiB, 12957 MiB
+100 %, 66 %, 15360 MiB, 1952 MiB, 12957 MiB
+100 %, 77 %, 15360 MiB, 1952 MiB, 12957 MiB
+
+100 %, 77 %, 15360 MiB, 1952 MiB, 12957 MiB
+100 %, 74 %, 15360 MiB, 1952 MiB, 12957 MiB
+100 %, 71 %, 15360 MiB, 1952 MiB, 12957 MiB
+100 %, 77 %, 15360 MiB, 1952 MiB, 12957 MiB
+
+99 %, 71 %, 15360 MiB, 1952 MiB, 12957 MiB
+99 %, 74 %, 15360 MiB, 1952 MiB, 12957 MiB
+99 %, 70 %, 15360 MiB, 1952 MiB, 12957 MiB
+99 %, 71 %, 15360 MiB, 1952 MiB, 12957 MiB
+
+68 %, 44 %, 15360 MiB, 1952 MiB, 12957 MiB
+100 %, 69 %, 15360 MiB, 1952 MiB, 12957 MiB
+72 %, 52 %, 15360 MiB, 1952 MiB, 12957 MiB
+70 %, 51 %, 15360 MiB, 1952 MiB, 12957 MiB
+
+100 %, 57 %, 15360 MiB, 1952 MiB, 12957 MiB
+84 %, 49 %, 15360 MiB, 1952 MiB, 12957 MiB
+96 %, 61 %, 15360 MiB, 1952 MiB, 12957 MiB
+59 %, 26 %, 15360 MiB, 1952 MiB, 12957 MiB
+
+100 %, 62 %, 15360 MiB, 1952 MiB, 12957 MiB
+100 %, 73 %, 15360 MiB, 1952 MiB, 12957 MiB
+100 %, 60 %, 15360 MiB, 1952 MiB, 12957 MiB
+100 %, 58 %, 15360 MiB, 1952 MiB, 12957 MiB
+
+100 %, 71 %, 15360 MiB, 1952 MiB, 12957 MiB
+100 %, 72 %, 15360 MiB, 1952 MiB, 12957 MiB
+100 %, 69 %, 15360 MiB, 1952 MiB, 12957 MiB
+100 %, 75 %, 15360 MiB, 1952 MiB, 12957 MiB
+
+99 %, 72 %, 15360 MiB, 1952 MiB, 12957 MiB
+99 %, 74 %, 15360 MiB, 1952 MiB, 12957 MiB
+99 %, 70 %, 15360 MiB, 1952 MiB, 12957 MiB
+99 %, 73 %, 15360 MiB, 1952 MiB, 12957 MiB
+
+64 %, 38 %, 15360 MiB, 1952 MiB, 12957 MiB
+92 %, 65 %, 15360 MiB, 1952 MiB, 12957 MiB
+68 %, 44 %, 15360 MiB, 1952 MiB, 12957 MiB
+64 %, 37 %, 15360 MiB, 1952 MiB, 12957 MiB
+
+56 %, 19 %, 15360 MiB, 1952 MiB, 12957 MiB
+92 %, 52 %, 15360 MiB, 1952 MiB, 12957 MiB
+100 %, 62 %, 15360 MiB, 1952 MiB, 12957 MiB
+55 %, 18 %, 15360 MiB, 1952 MiB, 12957 MiB
+
+100 %, 67 %, 15360 MiB, 1952 MiB, 12957 MiB
+100 %, 71 %, 15360 MiB, 1952 MiB, 12957 MiB
+100 %, 60 %, 15360 MiB, 1952 MiB, 12957 MiB
+100 %, 69 %, 15360 MiB, 1952 MiB, 12957 MiB
+
+0 %, 0 %, 15360 MiB, 1952 MiB, 12957 MiB
+0 %, 0 %, 15360 MiB, 1952 MiB, 12957 MiB
+0 %, 0 %, 15360 MiB, 1952 MiB, 12957 MiB
+0 %, 0 %, 15360 MiB, 1952 MiB, 12957 MiB
+
+0 %, 0 %, 15360 MiB, 1952 MiB, 12957 MiB
+0 %, 0 %, 15360 MiB, 1952 MiB, 12957 MiB
+6 %, 0 %, 15360 MiB, 1952 MiB, 12957 MiB
+0 %, 0 %, 15360 MiB, 1952 MiB, 12957 MiB
+```
+More logs is in `gpu_utilization_fsdp.csv`

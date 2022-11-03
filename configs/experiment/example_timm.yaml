@@ -7,7 +7,7 @@ defaults:
   - override /datamodule: cifar.yaml
   - override /model: timm.yaml
   - override /callbacks: default.yaml
-  - override /trainer: fsdp.yaml
+  - override /trainer: ddp.yaml
   - override /logger: tensorboard.yaml
 
 
@@ -21,7 +21,7 @@ seed: 12345
 trainer:
   min_epochs: 10
   max_epochs: 26
-#  gradient_clip_val: 0.5
+  gradient_clip_val: 0.5
 
 datamodule:
   batch_size: 512
