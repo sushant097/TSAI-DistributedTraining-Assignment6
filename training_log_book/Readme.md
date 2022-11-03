@@ -144,3 +144,9 @@ utilization.gpu [%], utilization.memory [%], memory.total [MiB], memory.free [Mi
 0 %, 0 %, 15360 MiB, 1952 MiB, 12957 MiB
 ```
 More logs is in `gpu_utilization_fsdp.csv`
+
+
+### Multi-node training
+g4.8x instance
+
+nvidia-smi --query-gpu=timestamp,memory.used,memory.free,memory.total,utilization.gpu --format=csv -l 1
