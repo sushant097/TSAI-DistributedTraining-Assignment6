@@ -157,7 +157,7 @@ MASTER_PORT=29500 MASTER_ADDR=172.31.26.101 WORLD_SIZE=2 NODE_RANK=1 python src/
 ```
 
 
-**Instance Type: g4ad.12xlarge**
+**Instance Type: g4dn.12xlarge**
 
 #### Tensorboard dev logs
 
