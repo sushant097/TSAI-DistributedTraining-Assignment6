@@ -20,6 +20,15 @@ separate destination like Google Drive, or any other place whereas git adds the 
 MASTER_PORT=29500 MASTER_ADDR=172.31.21.232 WORLD_SIZE=2 NODE_RANK=0 python src/train.py trainer=ddp trainer.devices=2 trainer.num_nodes=2 experiment=example_timm
 
 MASTER_PORT=29500 MASTER_ADDR=172.31.22.136 WORLD_SIZE=2 NODE_RANK=1 python src/train.py trainer=ddp trainer.devices=2 trainer.num_nodes=2 experiment=example_timm
+
+######ddp _sim
+MASTER_PORT=29500 MASTER_ADDR=172.31.1.205 WORLD_SIZE=4 NODE_RANK=0 python src/train.py trainer=ddp_sim trainer.devices=1 trainer.num_nodes=4 experiment=example_timm
+
+MASTER_PORT=29500 MASTER_ADDR=172.31.4.134 WORLD_SIZE=4 NODE_RANK=1 python src/train.py trainer=ddp_sim trainer.devices=1 trainer.num_nodes=4 experiment=example_timm
+MASTER_PORT=29500 MASTER_ADDR=172.31.9.20 WORLD_SIZE=4 NODE_RANK=2 python src/train.py trainer=ddp_sim trainer.devices=1 trainer.num_nodes=4 experiment=example_timm
+MASTER_PORT=29500 MASTER_ADDR=172.31.11.17 WORLD_SIZE=4 NODE_RANK=3 python src/train.py trainer=ddp_sim trainer.devices=1 trainer.num_nodes=4 experiment=example_timm
+
+
 ## How to run
 
 Install dependencies

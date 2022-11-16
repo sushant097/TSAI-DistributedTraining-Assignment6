@@ -20,7 +20,7 @@ Dump nvidia logs:
 do nvidia-smi --query-gpu=utilization.gpu,utilization.memory,memory.total,memory.free,memory.used --format=csv >> gpu_utillization.csv; sleep 2; 
 done
 ```
-
+**Maximum batch size = 512**
 #### Tensorboard dev logs
 
 ```
@@ -151,12 +151,23 @@ More logs is in `gpu_utilization_fsdp.csv`
 **Command:**
 ```
 
-MASTER_PORT=29500 MASTER_ADDR=172.31.23.109 WORLD_SIZE=2 NODE_RANK=0 python src/train.py trainer=ddp_sim trainer.devices=2 trainer.num_nodes=2 experiment=example_timm
+MASTER_PORT=29500 MASTER_ADDR=172.31.23.109 WORLD_SIZE=2 NODE_RANK=0 python src/train.py trainer=ddp trainer.devices=4 trainer.num_nodes=2 experiment=example_timm
 
-MASTER_PORT=29500 MASTER_ADDR=172.31.26.101 WORLD_SIZE=2 NODE_RANK=1 python src/train.py trainer=ddp_sim trainer.devices=2 trainer.num_nodes=2 experiment=example_timm
+MASTER_PORT=29500 MASTER_ADDR=172.31.26.101 WORLD_SIZE=2 NODE_RANK=1 python src/train.py trainer=ddp_sim trainer.devices=4 trainer.num_nodes=2 experiment=example_timm
 ```
 
 
-**Instance Type: g4ad.8xlarge**
+**Instance Type: g4ad.12xlarge**
 
-nvidia-smi --query-gpu=timestamp,memory.used,memory.free,memory.total,utilization.gpu --format=csv -l 1
+#### Tensorboard dev logs
+
+```
+tensorboard dev upload \
+    --logdir logs --name " Multi-node Training" \
+    --description " Training on 4 T4 GPUs each node - Multi-node Training"
+```
+#### Tensorboard dev Experiment logs: https://tensorboard.dev/experiment/zrtGnjbRQ5uJkLwNh8F8uw/#scalars&_smoothingWeight=0.846
+
+**Maximum batch size=512**
+
+**Effective batch size=2x512x4**
