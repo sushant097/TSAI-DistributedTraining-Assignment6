@@ -162,11 +162,9 @@ MASTER_PORT=29500 MASTER_ADDR=172.31.26.101 WORLD_SIZE=2 NODE_RANK=1 python src/
 #### Tensorboard dev logs
 
 ```
-tensorboard dev upload \
-    --logdir logs --name " Multi-node Training" \
-    --description " Training on 4 T4 GPUs each node - Multi-node Training"
+tensorboard dev upload --logdir logs --name " Multi-node Training" --description " Training on 4 T4 GPUs each node - Multi-node Training"
 ```
-#### Tensorboard dev Experiment logs: https://tensorboard.dev/experiment/zrtGnjbRQ5uJkLwNh8F8uw/#scalars&_smoothingWeight=0.846
+#### Tensorboard dev Experiment logs: https://tensorboard.dev/experiment/0KEXYxL1RCmQE8QONpkmGA/#scalars&_smoothingWeight=0.81
 
 **Maximum batch size=512**
 
